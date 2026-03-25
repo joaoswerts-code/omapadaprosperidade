@@ -1,65 +1,172 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Mapa da Prosperidade</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="style.css">
+<title>Mapa da Prosperidade</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #000;
+  color: #fff;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: radial-gradient(circle at center, #111, #000);
+}
+
+.hero h1 {
+  font-size: 42px;
+  font-weight: 800;
+  max-width: 800px;
+}
+
+.hero p {
+  margin: 20px 0;
+  opacity: 0.8;
+}
+
+/* BOTÃO */
+.btn {
+  background: #00ff88;
+  color: #000;
+  padding: 15px 35px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 6px;
+}
+
+.btn:hover {
+  transform: scale(1.08);
+}
+
+/* VIDEO */
+.video {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.video iframe {
+  width: 100%;
+  max-width: 800px;
+  height: 450px;
+  border-radius: 10px;
+}
+
+/* SEÇÕES */
+.section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  width: 260px;
+  background: #111;
+  padding: 25px;
+  border-radius: 12px;
+  transform: translateY(40px);
+  opacity: 0;
+  transition: 0.6s;
+}
+
+/* CTA FIXO */
+.cta-fixed {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #00ff88;
+  color: #000;
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 999;
+}
+
+/* ANIMAÇÃO */
+.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+</style>
 </head>
 
 <body>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="container">
-    <h1>Descubra o Método Que Está Fazendo Pessoas Comuns Faturarem Todos os Dias</h1>
+  <div>
+    <h1>Descubra o Método Que Está Fazendo Pessoas Faturarem Online</h1>
     <p>Mesmo começando do zero e sem aparecer</p>
-
-    <button class="cta">QUERO COMEÇAR AGORA</button>
+    <button class="btn" onclick="comprar()">QUERO COMEÇAR AGORA</button>
   </div>
 </section>
 
 <!-- VIDEO -->
 <section class="video">
-  <div class="container">
-    <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
-  </div>
+  <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
 </section>
 
 <!-- BENEFÍCIOS -->
-<section class="benefits">
-  <div class="container">
-    <h2>O que você vai aprender:</h2>
+<section class="section">
+  <h2>O que você vai aprender</h2>
 
-    <div class="grid">
-      <div class="card">Como gerar renda online</div>
-      <div class="card">Estratégia validada</div>
-      <div class="card">Automação completa</div>
-    </div>
+  <div class="cards">
+    <div class="card">Método validado</div>
+    <div class="card">Estratégia escalável</div>
+    <div class="card">Renda online</div>
+    <div class="card">Automação</div>
   </div>
 </section>
 
-<!-- PROVA SOCIAL -->
-<section class="proof">
-  <div class="container">
-    <h2>Resultados reais</h2>
-    <p>+3.000 alunos já aplicando</p>
-  </div>
-</section>
+<!-- CTA FIXO -->
+<div class="cta-fixed" onclick="comprar()">
+  GARANTIR MINHA VAGA
+</div>
 
-<!-- CTA FINAL -->
-<section class="cta-final">
-  <div class="container">
-    <h2>Garanta seu acesso agora</h2>
-    <button class="cta">COMPRAR AGORA</button>
-  </div>
-</section>
+<script>
+function comprar(){
+  window.location.href = "https://pay.kiwify.com.br/3q1qqMj?afid=UNFwMQW5";
+}
 
-<script src="script.js"></script>
+/* animação scroll */
+const cards = document.querySelectorAll('.card');
+
+window.addEventListener('scroll', () => {
+  cards.forEach(card => {
+    const pos = card.getBoundingClientRect().top;
+    if(pos < window.innerHeight - 100){
+      card.classList.add('show');
+    }
+  });
+});
+</script>
 
 </body>
 </html>
