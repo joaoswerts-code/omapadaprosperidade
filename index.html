@@ -1,118 +1,354 @@
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mapa da Prosperidade</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050505;
+      --bg-soft: #0b0b0b;
+      --text: #ffffff;
+      --muted: #c9c9c9;
+      --gold: #d6a318;
+      --gold-soft: rgba(214, 163, 24, 0.14);
+      --border: rgba(214, 163, 24, 0.22);
+    }
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background: #000;
-  color: #fff;
-}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background:
+        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px),
+        radial-gradient(circle at center, rgba(214,163,24,0.12), transparent 40%),
+        var(--bg);
+      background-size: 32px 32px, 32px 32px, auto, auto;
+    }
 
-/* HERO */
-.hero {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background: radial-gradient(circle at center, #1a1a1a, #000);
-}
+    .topbar {
+      background: var(--gold);
+      color: #111;
+      text-align: center;
+      padding: 12px 16px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 14px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
 
-.hero h1 {
-  font-size: 42px;
-  font-weight: 800;
-  max-width: 800px;
-  background: linear-gradient(90deg, #d4af37, #ffd700);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
 
-.hero p {
-  margin: 20px 0;
-  opacity: 0.8;
-}
+    .hero {
+      padding: 72px 0 36px;
+      text-align: center;
+    }
 
-/* BOTÃO DOURADO */
-.btn {
-  background: linear-gradient(90deg, #d4af37, #ffd700);
-  color: #000;
-  padding: 15px 35px;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-  border-radius: 6px;
-}
+    .headline {
+      max-width: 980px;
+      margin: 0 auto;
+      font-size: clamp(2.3rem, 6vw, 4.6rem);
+      line-height: 1.02;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+    }
 
-.btn:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 20px rgba(255,215,0,0.5);
-}
+    .gold { color: var(--gold); }
 
-/* VIDEO */
-.video {
-  padding: 80px 20px;
-  text-align: center;
-}
+    .subtext {
+      max-width: 760px;
+      margin: 24px auto 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      line-height: 1.7;
+    }
 
-.video iframe {
-  width: 100%;
-  max-width: 800px;
-  height: 450px;
-  border-radius: 10px;
-  border: 2px solid #d4af37;
-}
+    .video-box {
+      max-width: 720px;
+      height: 405px;
+      margin: 46px auto 0;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: linear-gradient(180deg, #050505, #020202);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.03) inset, 0 20px 60px rgba(0,0,0,0.5);
+      position: relative;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
 
-/* SEÇÕES */
-.section {
-  padding: 80px 20px;
-  text-align: center;
-}
+    .video-box::before {
+      content: "";
+      position: absolute;
+      inset: auto -20% -35% -20%;
+      height: 220px;
+      background: radial-gradient(circle, rgba(214,163,24,0.18), transparent 65%);
+      filter: blur(16px);
+    }
 
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
+    .play-wrap {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
 
-.card {
-  width: 260px;
-  background: #111;
-  padding: 25px;
-  border-radius: 12px;
-  border: 1px solid #d4af37;
-  transform: translateY(40px);
-  opacity: 0;
-  transition: 0.6s;
-}
+    .play-btn {
+      width: 88px;
+      height: 88px;
+      border-radius: 999px;
+      border: 1px solid rgba(214,163,24,0.5);
+      background: rgba(214,163,24,0.14);
+      display: grid;
+      place-items: center;
+      margin: 0 auto 14px;
+      backdrop-filter: blur(3px);
+    }
 
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 0 15px rgba(212,175,55,0.3);
-}
+    .triangle {
+      width: 0;
+      height: 0;
+      border-left: 18px solid var(--gold);
+      border-top: 11px solid transparent;
+      border-bottom: 11px solid transparent;
+      margin-left: 4px;
+    }
 
-/* CTA FIXO */
-.cta-fixed {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(90deg, #d4af37, #ffd700);
-  color: #000;
-  padding: 15px 30px;
-  border-radius: 50px;
-  font-weight: bold;
-  cursor: pointer;
-  z-index: 999;
-}
+    .video-label {
+      color: var(--gold);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
 
-/* ANIMAÇÃO */
-.show {
-  transform: translateY(0);
-  opacity: 1;
-}
-</style>
+    .cta-row {
+      margin-top: 34px;
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 220px;
+      padding: 16px 24px;
+      border-radius: 16px;
+      text-decoration: none;
+      font-weight: 800;
+      transition: 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #111;
+      box-shadow: 0 14px 40px rgba(214,163,24,0.22);
+    }
+
+    .btn-secondary {
+      border-color: var(--border);
+      color: white;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .section {
+      padding: 76px 0;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      text-align: center;
+      margin: 0 0 16px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+    }
+
+    .section-desc {
+      max-width: 760px;
+      margin: 0 auto 34px;
+      text-align: center;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    .card h3 {
+      margin: 0 0 12px;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .faq {
+      max-width: 860px;
+      margin: 0 auto;
+      display: grid;
+      gap: 14px;
+    }
+
+    details {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 18px 20px;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 700;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    details p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 14px 0 0;
+    }
+
+    .final-cta {
+      margin: 24px auto 0;
+      max-width: 900px;
+      text-align: center;
+      padding: 34px;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(214,163,24,0.10), rgba(255,255,255,0.02));
+    }
+
+    .final-cta p {
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 700px;
+      margin: 12px auto 0;
+    }
+
+    footer {
+      padding: 26px 16px 50px;
+      text-align: center;
+      color: #9c9c9c;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+      .video-box { height: 260px; }
+      .hero { padding-top: 56px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">Aproveite agora, o preço vai subir!</div>
+
+  <main>
+    <section class="hero container">
+      <h1 class="headline">
+        Descubra o Seu <span class="gold">Mapa da Prosperidade</span> e Transforme Sua Vida de Dentro Para Fora
+      </h1>
+      <p class="subtext">
+        Uma página criada do zero, inspirada no visual da sua landing page, pronta para você editar e publicar no GitHub sem depender do Base44.
+      </p>
+
+      <div class="video-box">
+        <div class="play-wrap">
+          <div class="play-btn"><div class="triangle"></div></div>
+          <div class="video-label">Seu vídeo aqui</div>
+        </div>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#comprar">Quero meu mapa agora</a>
+        <a class="btn btn-secondary" href="#faq">Tirar dúvidas</a>
+      </div>
+    </section>
+
+    <section class="section container">
+      <h2 class="section-title">O que você vai encontrar</h2>
+      <p class="section-desc">Troque esses textos pelos textos reais da sua oferta. A estrutura já está pronta para edição.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Clareza</h3>
+          <p>Entenda padrões, bloqueios e caminhos de crescimento com uma apresentação simples e objetiva.</p>
+        </div>
+        <div class="card">
+          <h3>Direcionamento</h3>
+          <p>Use o mapa como ferramenta para tomar decisões com mais consciência e foco no que importa.</p>
+        </div>
+        <div class="card">
+          <h3>Transformação</h3>
+          <p>Organize sua energia, fortaleça sua visão e avance com mais segurança na sua jornada.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section container">
+      <h2 class="section-title">Perguntas frequentes</h2>
+      <p class="section-desc">Essas perguntas são exemplos. Você pode editar tudo no arquivo.</p>
+      <div class="faq">
+        <details>
+          <summary>Como recebo o meu mapa?</summary>
+          <p>Você pode explicar aqui como funciona a entrega, prazo, formato e acesso ao conteúdo.</p>
+        </details>
+        <details>
+          <summary>Preciso de algum conhecimento prévio?</summary>
+          <p>Escreva aqui sua resposta real, de forma clara e direta, para reduzir objeções do visitante.</p>
+        </details>
+        <details>
+          <summary>O pagamento é único?</summary>
+          <p>Adicione aqui as informações corretas sobre pagamento, garantia e condições da oferta.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="comprar" class="section container">
+      <div class="final-cta">
+        <h2 class="section-title">Está pronta para acessar seu Mapa da Prosperidade?</h2>
+        <p>
+          Aqui vai sua chamada final. Você pode inserir botão de checkout, depoimentos, bônus e qualquer outra seção que precisar.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#">Comprar agora</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 - Mapa da Prosperidade. Todos os direitos reservados.
+  </footer>
+</body>
+</html>
