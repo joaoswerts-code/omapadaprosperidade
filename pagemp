@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Mapa da Prosperidade</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <h1>Descubra o Método Que Está Fazendo Pessoas Comuns Faturarem Todos os Dias</h1>
+    <p>Mesmo começando do zero e sem aparecer</p>
+
+    <button class="cta">QUERO COMEÇAR AGORA</button>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section class="video">
+  <div class="container">
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+  </div>
+</section>
+
+<!-- BENEFÍCIOS -->
+<section class="benefits">
+  <div class="container">
+    <h2>O que você vai aprender:</h2>
+
+    <div class="grid">
+      <div class="card">Como gerar renda online</div>
+      <div class="card">Estratégia validada</div>
+      <div class="card">Automação completa</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROVA SOCIAL -->
+<section class="proof">
+  <div class="container">
+    <h2>Resultados reais</h2>
+    <p>+3.000 alunos já aplicando</p>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="container">
+    <h2>Garanta seu acesso agora</h2>
+    <button class="cta">COMPRAR AGORA</button>
+  </div>
+</section>
+
+<script src="script.js"></script>
+
+</body>
+</html>
