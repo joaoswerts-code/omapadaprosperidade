@@ -238,23 +238,39 @@
 
     .testimonials-wrap {
       position: relative;
-      overflow: hidden;
+      overflow-x: auto;
+      overflow-y: hidden;
       margin-top: 26px;
-      mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-      -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+      padding-bottom: 10px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(214,163,24,0.55) rgba(255,255,255,0.08);
+      -webkit-overflow-scrolling: touch;
+      cursor: grab;
+    }
+
+    .testimonials-wrap:active {
+      cursor: grabbing;
+    }
+
+    .testimonials-wrap::-webkit-scrollbar {
+      height: 10px;
+    }
+
+    .testimonials-wrap::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.08);
+      border-radius: 999px;
+    }
+
+    .testimonials-wrap::-webkit-scrollbar-thumb {
+      background: rgba(214,163,24,0.55);
+      border-radius: 999px;
     }
 
     .testimonials-track {
       display: flex;
       gap: 18px;
       width: max-content;
-      animation: slideTestimonials 42s linear infinite;
       padding: 10px 0;
-      will-change: transform;
-    }
-
-    .testimonials-wrap:hover .testimonials-track {
-      animation-play-state: paused;
     }
 
     .testimonial-card {
@@ -275,10 +291,7 @@
       background: #111;
     }
 
-    @keyframes slideTestimonials {
-      from { transform: translateX(0); }
-      to { transform: translateX(calc(-50% - 9px)); }
-    }
+    
 
     .faq {
       max-width: 860px;
@@ -449,7 +462,7 @@
     <section id="depoimentos" class="section container">
       <div class="section-kicker">Resultados reais de alunos reais</div>
       <h2 class="section-title">O Que Estão Dizendo Sobre o <span class="gold">Mapa da Prosperidade</span></h2>
-      <p class="section-desc">Veja alguns relatos de pessoas que aplicaram o conteúdo do Mapa da Prosperidade e começaram a perceber mudanças reais em suas vidas.</p>
+      <p class="section-desc">Arraste para o lado e veja alguns relatos de pessoas que aplicaram o conteúdo do Mapa da Prosperidade e começaram a perceber mudanças reais em suas vidas.</p>
 
       <div class="testimonials-wrap">
         <div class="testimonials-track">
@@ -461,15 +474,6 @@
           <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.52.jpeg" alt="Depoimento 6"></div>
           <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.52 (1).jpeg" alt="Depoimento 7"></div>
           <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.52 (2).jpeg" alt="Depoimento 8"></div>
-
-          <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.50.jpeg" alt="Depoimento 1 repetido"></div>
-          <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.51 (1).jpeg" alt="Depoimento 2 repetido"></div>
-          <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.51 (2).jpeg" alt="Depoimento 3 repetido"></div>
-          <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.51 (3).jpeg" alt="Depoimento 4 repetido"></div>
-          <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.51.jpeg" alt="Depoimento 5 repetido"></div>
-          <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.52.jpeg" alt="Depoimento 6 repetido"></div>
-          <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.52 (1).jpeg" alt="Depoimento 7 repetido"></div>
-          <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.52 (2).jpeg" alt="Depoimento 8 repetido"></div>
         </div>
       </div>
     </section>
