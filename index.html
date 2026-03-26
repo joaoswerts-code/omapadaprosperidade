@@ -10,7 +10,6 @@
   <style>
     :root {
       --bg: #050505;
-      --bg-soft: #0b0b0b;
       --text: #ffffff;
       --muted: #c9c9c9;
       --gold: #d6a318;
@@ -20,6 +19,7 @@
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
@@ -32,6 +32,8 @@
       background-size: 32px 32px, 32px 32px, auto, auto;
       overflow-x: hidden;
     }
+
+    img { max-width: 100%; display: block; }
 
     .topbar {
       background: var(--gold);
@@ -152,6 +154,7 @@
       font-weight: 800;
       transition: 0.2s ease;
       border: 1px solid transparent;
+      cursor: pointer;
     }
 
     .btn-primary {
@@ -175,7 +178,7 @@
     }
 
     .section {
-      padding: 76px 0;
+      padding: 56px 0;
     }
 
     .section-title {
@@ -202,6 +205,10 @@
       text-align: center;
       color: var(--muted);
       line-height: 1.7;
+    }
+
+    .section-tight {
+      padding-top: 24px;
     }
 
     .grid {
@@ -243,6 +250,7 @@
       width: max-content;
       animation: slideTestimonials 42s linear infinite;
       padding: 10px 0;
+      will-change: transform;
     }
 
     .testimonials-wrap:hover .testimonials-track {
@@ -261,9 +269,10 @@
     }
 
     .testimonial-card img {
-      display: block;
       width: 100%;
       height: auto;
+      object-fit: cover;
+      background: #111;
     }
 
     @keyframes slideTestimonials {
@@ -420,19 +429,19 @@
 
     <section class="section container">
       <h2 class="section-title">O que você vai encontrar</h2>
-      <p class="section-desc">Troque esses textos pelos textos reais da sua oferta. A estrutura já está pronta para edição.</p>
+      <p class="section-desc">O Mapa da Prosperidade foi criado para ajudar você a organizar sua vida por completo, destravar áreas importantes e aplicar ensinamentos práticos no seu dia a dia.</p>
       <div class="grid">
         <div class="card">
-          <h3>Clareza</h3>
-          <p>Entenda padrões, bloqueios e caminhos de crescimento com uma apresentação simples e objetiva.</p>
+          <h3>Clareza para sua vida</h3>
+          <p>Entenda com mais profundidade o que está travando seus resultados e quais mudanças precisam acontecer para você avançar com segurança.</p>
         </div>
         <div class="card">
-          <h3>Direcionamento</h3>
-          <p>Use o mapa como ferramenta para tomar decisões com mais consciência e foco no que importa.</p>
+          <h3>Direcionamento prático</h3>
+          <p>Receba orientações objetivas para aplicar no seu cotidiano, melhorar sua rotina e construir uma vida mais alinhada com seus objetivos.</p>
         </div>
         <div class="card">
-          <h3>Transformação</h3>
-          <p>Organize sua energia, fortaleça sua visão e avance com mais segurança na sua jornada.</p>
+          <h3>Transformação real</h3>
+          <p>Fortaleça sua mentalidade, sua organização e sua visão de futuro para viver uma mudança de dentro para fora em todas as áreas.</p>
         </div>
       </div>
     </section>
@@ -440,7 +449,7 @@
     <section id="depoimentos" class="section container">
       <div class="section-kicker">Resultados reais de alunos reais</div>
       <h2 class="section-title">O Que Estão Dizendo Sobre o <span class="gold">Mapa da Prosperidade</span></h2>
-      <p class="section-desc">Os cards abaixo deslizam automaticamente, no estilo da animação que aparece no seu vídeo.</p>
+      <p class="section-desc">Veja alguns relatos de pessoas que aplicaram o conteúdo do Mapa da Prosperidade e começaram a perceber mudanças reais em suas vidas.</p>
 
       <div class="testimonials-wrap">
         <div class="testimonials-track">
@@ -465,21 +474,21 @@
       </div>
     </section>
 
-    <section id="faq" class="section container">
+    <section id="faq" class="section section-tight container">
       <h2 class="section-title">Perguntas frequentes</h2>
-      <p class="section-desc">Essas perguntas são exemplos. Você pode editar tudo no arquivo.</p>
+      <p class="section-desc">Tire suas principais dúvidas antes de entrar para o programa.</p>
       <div class="faq">
         <details>
-          <summary>Como recebo o meu mapa?</summary>
-          <p>Você pode explicar aqui como funciona a entrega, prazo, formato e acesso ao conteúdo.</p>
+          <summary>Como recebo acesso ao Mapa da Prosperidade?</summary>
+          <p>O acesso é liberado de forma digital logo após a confirmação do pagamento. Assim que sua compra for aprovada, você recebe as orientações para acessar todo o conteúdo.</p>
         </details>
         <details>
-          <summary>Preciso de algum conhecimento prévio?</summary>
-          <p>Escreva aqui sua resposta real, de forma clara e direta, para reduzir objeções do visitante.</p>
+          <summary>Preciso ter algum conhecimento prévio para aplicar?</summary>
+          <p>Não. O conteúdo foi pensado para ser simples, direto e aplicável, mesmo para quem está começando agora e quer reorganizar a vida com clareza e propósito.</p>
         </details>
         <details>
-          <summary>O pagamento é único?</summary>
-          <p>Adicione aqui as informações corretas sobre pagamento, garantia e condições da oferta.</p>
+          <summary>Possui garantia?</summary>
+          <p>Sim. Você tem 7 dias de garantia para acessar o conteúdo e avaliar com tranquilidade. Se dentro desse prazo sentir que o programa não é para você, poderá solicitar o reembolso.</p>
         </details>
       </div>
     </section>
@@ -488,9 +497,7 @@
       <div class="final-cta">
         <div class="offer-badge">Oferta especial de hoje</div>
         <h2 class="section-title">Entre hoje no <span class="gold">Mapa da Prosperidade</span> por um valor acessível</h2>
-        <p>
-          Tenha acesso ao conteúdo completo, aulas, materiais e direcionamento prático para começar sua transformação com clareza, organização e propósito.
-        </p>
+        <p>Tenha acesso ao conteúdo completo, aulas, materiais e direcionamento prático para começar sua transformação com mais clareza, disciplina, organização e propósito.</p>
 
         <div class="offer-price">
           <div class="offer-main-price">R$ 29,90</div>
@@ -503,7 +510,7 @@
         <div class="cta-row">
           <a class="btn btn-primary" href="https://pay.kiwify.com.br/3q1qqMj?afid=UNFwMQW5" target="_blank" rel="noopener noreferrer">Garantir minha vaga agora</a>
         </div>
-        <div class="microcopy">Pagamento 100% seguro • Compra protegida</div>
+        <div class="microcopy">Pagamento 100% seguro • Compra protegida • Acesso digital imediato</div>
       </div>
     </section>
   </main>
