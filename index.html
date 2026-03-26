@@ -301,12 +301,17 @@
 
     .final-cta {
       margin: 24px auto 0;
-      max-width: 900px;
+      max-width: 920px;
       text-align: center;
-      padding: 34px;
-      border: 1px solid var(--border);
+      padding: 40px 32px;
+      border: 1px solid rgba(214,163,24,0.32);
       border-radius: 28px;
-      background: linear-gradient(180deg, rgba(214,163,24,0.10), rgba(255,255,255,0.02));
+      background:
+        radial-gradient(circle at top, rgba(214,163,24,0.16), transparent 42%),
+        linear-gradient(180deg, rgba(214,163,24,0.14), rgba(255,255,255,0.03));
+      box-shadow: 0 24px 70px rgba(0,0,0,0.34);
+      position: relative;
+      overflow: hidden;
     }
 
     .final-cta p {
@@ -314,6 +319,56 @@
       line-height: 1.7;
       max-width: 700px;
       margin: 12px auto 0;
+    }
+
+    .offer-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(214,163,24,0.14);
+      border: 1px solid rgba(214,163,24,0.35);
+      color: var(--gold);
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .offer-price {
+      margin-top: 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .offer-main-price {
+      font-size: clamp(2.8rem, 7vw, 4.8rem);
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      color: white;
+    }
+
+    .offer-installments {
+      font-size: 1.15rem;
+      color: var(--gold);
+      font-weight: 800;
+    }
+
+    .offer-note {
+      margin-top: 10px;
+      color: #b6b6b6;
+      font-size: 0.98rem;
+    }
+
+    .offer-guarantee {
+      margin-top: 16px;
+      font-weight: 700;
+      color: #f1f1f1;
     }
 
     footer {
@@ -357,7 +412,7 @@
       </div>
 
       <div class="cta-row">
-        <a class="btn btn-primary" href="https://pay.kiwify.com.br/3q1qqMj?afid=UNFwMQW5" target="_blank" rel="noopener noreferrer">Quero entrar agora</a>
+        <a class="btn btn-primary" href="#comprar">Quero entrar agora</a>
         <a class="btn btn-secondary" href="#depoimentos">Ver depoimentos</a>
       </div>
       <div class="microcopy">Pagamento 100% seguro • Acesso imediato</div>
@@ -365,7 +420,7 @@
 
     <section class="section container">
       <h2 class="section-title">O que você vai encontrar</h2>
-      <p class="section-desc">Veja os principais pontos que abordamos no Mapa da Prosperidade.</p>
+      <p class="section-desc">Troque esses textos pelos textos reais da sua oferta. A estrutura já está pronta para edição.</p>
       <div class="grid">
         <div class="card">
           <h3>Clareza</h3>
@@ -385,18 +440,18 @@
     <section id="depoimentos" class="section container">
       <div class="section-kicker">Resultados reais de alunos reais</div>
       <h2 class="section-title">O Que Estão Dizendo Sobre o <span class="gold">Mapa da Prosperidade</span></h2>
-      <p class="section-desc">Veja como diversas pessoas obtiveram resultados excelentes e que partiram do mesmo ponto que você!</p>
+      <p class="section-desc">Os cards abaixo deslizam automaticamente, no estilo da animação que aparece no seu vídeo.</p>
 
       <div class="testimonials-wrap">
         <div class="testimonials-track">
-          <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.50.jpeg" alt=""></div>
-          <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.51 (1).jpeg" alt=""></div>
-          <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.51 (2).jpeg" alt=""></div>
-          <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.51 (3).jpeg" alt=""></div>
-          <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.51.jpeg" alt=""></div>
-          <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.52.jpeg" alt=""></div>
-          <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.52 (1).jpeg" alt=""></div>
-          <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.52 (2).jpeg" alt=""></div>
+          <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.50.jpeg" alt="Depoimento 1"></div>
+          <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.51 (1).jpeg" alt="Depoimento 2"></div>
+          <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.51 (2).jpeg" alt="Depoimento 3"></div>
+          <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.51 (3).jpeg" alt="Depoimento 4"></div>
+          <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.51.jpeg" alt="Depoimento 5"></div>
+          <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.52.jpeg" alt="Depoimento 6"></div>
+          <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.52 (1).jpeg" alt="Depoimento 7"></div>
+          <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.52 (2).jpeg" alt="Depoimento 8"></div>
 
           <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.50.jpeg" alt="Depoimento 1 repetido"></div>
           <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.51 (1).jpeg" alt="Depoimento 2 repetido"></div>
@@ -412,33 +467,43 @@
 
     <section id="faq" class="section container">
       <h2 class="section-title">Perguntas frequentes</h2>
-      <p class="section-desc"></p>
+      <p class="section-desc">Essas perguntas são exemplos. Você pode editar tudo no arquivo.</p>
       <div class="faq">
         <details>
           <summary>Como recebo o meu mapa?</summary>
-          <p>Você receberá o acesso pelo email imediatamente após confirmar a compra.</p>
+          <p>Você pode explicar aqui como funciona a entrega, prazo, formato e acesso ao conteúdo.</p>
         </details>
         <details>
           <summary>Preciso de algum conhecimento prévio?</summary>
-          <p>Você não precisa de nenhum conhecimento prévio para começar. O Mapa da Prosperidade foi criado exatamente para pessoas comuns, que estão começando do zero e querem uma forma simples e prática de alcançar resultados reais.</p>
+          <p>Escreva aqui sua resposta real, de forma clara e direta, para reduzir objeções do visitante.</p>
         </details>
         <details>
-          <summary>Possui garantia?</summary>
-          <p>Oferecemos uma garantia de 7 dias, ou seja, você pode acessar todo o conteúdo do Mapa da Prosperidade, assistir às aulas e, se por qualquer motivo achar que não é para você, basta solicitar o reembolso dentro desse prazo e devolveremos 100% do seu dinheiro.</p>
+          <summary>O pagamento é único?</summary>
+          <p>Adicione aqui as informações corretas sobre pagamento, garantia e condições da oferta.</p>
         </details>
       </div>
     </section>
 
     <section id="comprar" class="section container">
       <div class="final-cta">
-        <h2 class="section-title">Junte-se a milhares de pessoas que já transformaram suas vidas com o <span class="gold">Mapa da Prosperidade</span></h2>
+        <div class="offer-badge">Oferta especial de hoje</div>
+        <h2 class="section-title">Entre hoje no <span class="gold">Mapa da Prosperidade</span> por um valor acessível</h2>
         <p>
+          Tenha acesso ao conteúdo completo, aulas, materiais e direcionamento prático para começar sua transformação com clareza, organização e propósito.
         </p>
+
+        <div class="offer-price">
+          <div class="offer-main-price">R$ 29,90</div>
+          <div class="offer-installments">ou 6x de R$ 5,44</div>
+        </div>
+
+        <div class="offer-note">Acesso imediato após a confirmação do pagamento</div>
+        <div class="offer-guarantee">Garantia incondicional de 7 dias</div>
+
         <div class="cta-row">
-          <a class="btn btn-primary" href="https://pay.kiwify.com.br/3q1qqMj?afid=UNFwMQW5" target="_blank" rel="noopener noreferrer">Quero entrar agora</a>
+          <a class="btn btn-primary" href="https://pay.kiwify.com.br/3q1qqMj?afid=UNFwMQW5" target="_blank" rel="noopener noreferrer">Garantir minha vaga agora</a>
         </div>
-        </div>
-        <div class="microcopy">Pagamento 100% seguro • Garantia de 7 dias</div>
+        <div class="microcopy">Pagamento 100% seguro • Compra protegida</div>
       </div>
     </section>
   </main>
