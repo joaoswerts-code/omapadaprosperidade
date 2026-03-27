@@ -4,523 +4,75 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mapa da Prosperidade</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #050505;
-      --text: #ffffff;
-      --muted: #c9c9c9;
-      --gold: #d6a318;
-      --gold-soft: rgba(214, 163, 24, 0.14);
-      --border: rgba(214, 163, 24, 0.22);
-    }
+    body {margin:0;font-family:Inter,sans-serif;background:#050505;color:#fff}
+    .topbar{background:#d6a318;color:#111;text-align:center;padding:10px;font-weight:800}
+    .container{max-width:1100px;margin:auto;padding:20px}
+    h1{font-size:42px;text-align:center}
+    .gold{color:#d6a318}
+    .video{height:280px;border:1px solid #333;border-radius:20px;display:flex;align-items:center;justify-content:center;margin:30px 0}
+    .btn{display:inline-block;padding:16px 24px;border-radius:12px;font-weight:800;text-decoration:none;margin:10px}
+    .primary{background:#d6a318;color:#111}
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    .testimonials-wrap{overflow-x:auto;display:flex;gap:16px;padding:10px 0}
+    .testimonials-wrap img{width:260px;border-radius:16px}
 
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      color: var(--text);
-      background:
-        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px),
-        radial-gradient(circle at center, rgba(214,163,24,0.12), transparent 40%),
-        var(--bg);
-      background-size: 32px 32px, 32px 32px, auto, auto;
-      overflow-x: hidden;
-    }
+    .faq{margin-top:30px}
+    details{margin-bottom:10px;padding:12px;border:1px solid #333;border-radius:10px}
 
-    img { max-width: 100%; display: block; }
-
-    .topbar {
-      background: var(--gold);
-      color: #111;
-      text-align: center;
-      padding: 12px 16px;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-size: 14px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .container {
-      width: min(1120px, calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .hero {
-      padding: 72px 0 36px;
-      text-align: center;
-    }
-
-    .headline {
-      max-width: 980px;
-      margin: 0 auto;
-      font-size: clamp(2.3rem, 6vw, 4.6rem);
-      line-height: 1.02;
-      font-weight: 900;
-      letter-spacing: -0.04em;
-    }
-
-    .gold { color: var(--gold); }
-
-    .subtext {
-      max-width: 760px;
-      margin: 24px auto 0;
-      color: var(--muted);
-      font-size: clamp(1rem, 2vw, 1.15rem);
-      line-height: 1.7;
-    }
-
-    .video-box {
-      max-width: 720px;
-      height: 405px;
-      margin: 46px auto 0;
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      background: linear-gradient(180deg, #050505, #020202);
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.03) inset, 0 20px 60px rgba(0,0,0,0.5);
-      position: relative;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-    }
-
-    .video-box::before {
-      content: "";
-      position: absolute;
-      inset: auto -20% -35% -20%;
-      height: 220px;
-      background: radial-gradient(circle, rgba(214,163,24,0.18), transparent 65%);
-      filter: blur(16px);
-    }
-
-    .play-wrap {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-    }
-
-    .play-btn {
-      width: 88px;
-      height: 88px;
-      border-radius: 999px;
-      border: 1px solid rgba(214,163,24,0.5);
-      background: rgba(214,163,24,0.14);
-      display: grid;
-      place-items: center;
-      margin: 0 auto 14px;
-      backdrop-filter: blur(3px);
-    }
-
-    .triangle {
-      width: 0;
-      height: 0;
-      border-left: 18px solid var(--gold);
-      border-top: 11px solid transparent;
-      border-bottom: 11px solid transparent;
-      margin-left: 4px;
-    }
-
-    .video-label {
-      color: var(--gold);
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .cta-row {
-      margin-top: 34px;
-      display: flex;
-      gap: 14px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 220px;
-      padding: 16px 24px;
-      border-radius: 16px;
-      text-decoration: none;
-      font-weight: 800;
-      transition: 0.2s ease;
-      border: 1px solid transparent;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: var(--gold);
-      color: #111;
-      box-shadow: 0 14px 40px rgba(214,163,24,0.22);
-    }
-
-    .btn-secondary {
-      border-color: var(--border);
-      color: white;
-      background: rgba(255,255,255,0.02);
-    }
-
-    .btn:hover { transform: translateY(-2px); }
-
-    .microcopy {
-      margin-top: 12px;
-      color: #9f9f9f;
-      font-size: 0.95rem;
-    }
-
-    .section {
-      padding: 56px 0;
-    }
-
-    .section-title {
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      text-align: center;
-      margin: 0 0 16px;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-    }
-
-    .section-kicker {
-      text-align: center;
-      color: var(--gold);
-      font-weight: 800;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-      font-size: 0.92rem;
-    }
-
-    .section-desc {
-      max-width: 760px;
-      margin: 0 auto 34px;
-      text-align: center;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .section-tight {
-      padding-top: 24px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .card {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 24px;
-      padding: 24px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-    }
-
-    .card h3 {
-      margin: 0 0 12px;
-      font-size: 1.2rem;
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .testimonials-wrap {
-      position: relative;
-      overflow-x: auto;
-      overflow-y: hidden;
-      margin-top: 26px;
-      padding-bottom: 10px;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(214,163,24,0.55) rgba(255,255,255,0.08);
-      -webkit-overflow-scrolling: touch;
-      cursor: grab;
-    }
-
-    .testimonials-wrap:active {
-      cursor: grabbing;
-    }
-
-    .testimonials-wrap::-webkit-scrollbar {
-      height: 10px;
-    }
-
-    .testimonials-wrap::-webkit-scrollbar-track {
-      background: rgba(255,255,255,0.08);
-      border-radius: 999px;
-    }
-
-    .testimonials-wrap::-webkit-scrollbar-thumb {
-      background: rgba(214,163,24,0.55);
-      border-radius: 999px;
-    }
-
-    .testimonials-track {
-      display: flex;
-      gap: 18px;
-      width: max-content;
-      padding: 10px 0;
-    }
-
-    .testimonial-card {
-      width: min(320px, 78vw);
-      flex: 0 0 auto;
-      border-radius: 24px;
-      overflow: hidden;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.28);
-      transform: translateZ(0);
-    }
-
-    .testimonial-card img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      background: #111;
-    }
-
-    
-
-    .faq {
-      max-width: 860px;
-      margin: 0 auto;
-      display: grid;
-      gap: 14px;
-    }
-
-    details {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 18px;
-      padding: 18px 20px;
-    }
-
-    summary {
-      cursor: pointer;
-      font-weight: 700;
-      list-style: none;
-    }
-
-    summary::-webkit-details-marker { display: none; }
-
-    details p {
-      color: var(--muted);
-      line-height: 1.7;
-      margin: 14px 0 0;
-    }
-
-    .final-cta {
-      margin: 24px auto 0;
-      max-width: 920px;
-      text-align: center;
-      padding: 40px 32px;
-      border: 1px solid rgba(214,163,24,0.32);
-      border-radius: 28px;
-      background:
-        radial-gradient(circle at top, rgba(214,163,24,0.16), transparent 42%),
-        linear-gradient(180deg, rgba(214,163,24,0.14), rgba(255,255,255,0.03));
-      box-shadow: 0 24px 70px rgba(0,0,0,0.34);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .final-cta p {
-      color: var(--muted);
-      line-height: 1.7;
-      max-width: 700px;
-      margin: 12px auto 0;
-    }
-
-    .offer-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 16px;
-      border-radius: 999px;
-      background: rgba(214,163,24,0.14);
-      border: 1px solid rgba(214,163,24,0.35);
-      color: var(--gold);
-      font-size: 0.9rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-    }
-
-    .offer-price {
-      margin-top: 22px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .offer-main-price {
-      font-size: clamp(2.8rem, 7vw, 4.8rem);
-      font-weight: 900;
-      letter-spacing: -0.05em;
-      line-height: 1;
-      color: white;
-    }
-
-    .offer-installments {
-      font-size: 1.15rem;
-      color: var(--gold);
-      font-weight: 800;
-    }
-
-    .offer-note {
-      margin-top: 10px;
-      color: #b6b6b6;
-      font-size: 0.98rem;
-    }
-
-    .offer-guarantee {
-      margin-top: 16px;
-      font-weight: 700;
-      color: #f1f1f1;
-    }
-
-    footer {
-      padding: 26px 16px 50px;
-      text-align: center;
-      color: #9c9c9c;
-      font-size: 0.95rem;
-    }
-
-    @media (max-width: 900px) {
-      .grid { grid-template-columns: 1fr; }
-      .video-box { height: 260px; }
-      .hero { padding-top: 56px; }
-      .testimonials-wrap {
-        mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
-        -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
-      }
-      .testimonials-track {
-        animation-duration: 30s;
-      }
-    }
+    .offer{margin-top:40px;padding:30px;border:1px solid #d6a318;border-radius:20px;text-align:center}
+    .price{font-size:42px;font-weight:900}
   </style>
 </head>
 <body>
-  <div class="topbar">Aproveite agora, o preço vai subir!</div>
 
-  <main>
-    <section class="hero container">
-      <h1 class="headline">
-        Descubra o Seu <span class="gold">Mapa da Prosperidade</span> e Transforme Sua Vida de Dentro Para Fora
-      </h1>
-      <p class="subtext">
-        Uma jornada prática para reorganizar sua mente, alinhar sua energia e abrir caminhos de crescimento em todas as áreas da sua vida.
-      </p>
+<div class="topbar">APROVEITE AGORA, O PREÇO VAI SUBIR</div>
 
-      <div class="video-box">
-        <div class="play-wrap">
-          <div class="play-btn"><div class="triangle"></div></div>
-          <div class="video-label">Seu vídeo aqui</div>
-        </div>
-      </div>
+<div class="container">
 
-      <div class="cta-row">
-        <a class="btn btn-primary" href="#comprar">Quero entrar agora</a>
-        <a class="btn btn-secondary" href="#depoimentos">Ver depoimentos</a>
-      </div>
-      <div class="microcopy">Pagamento 100% seguro • Acesso imediato</div>
-    </section>
+<h1>Descubra o <span class="gold">Mapa da Prosperidade</span></h1>
 
-    <section class="section container">
-      <h2 class="section-title">O que você vai encontrar</h2>
-      <p class="section-desc">O Mapa da Prosperidade foi criado para ajudar você a organizar sua vida por completo, destravar áreas importantes e aplicar ensinamentos práticos no seu dia a dia.</p>
-      <div class="grid">
-        <div class="card">
-          <h3>Clareza para sua vida</h3>
-          <p>Entenda com mais profundidade o que está travando seus resultados e quais mudanças precisam acontecer para você avançar com segurança.</p>
-        </div>
-        <div class="card">
-          <h3>Direcionamento prático</h3>
-          <p>Receba orientações objetivas para aplicar no seu cotidiano, melhorar sua rotina e construir uma vida mais alinhada com seus objetivos.</p>
-        </div>
-        <div class="card">
-          <h3>Transformação real</h3>
-          <p>Fortaleça sua mentalidade, sua organização e sua visão de futuro para viver uma mudança de dentro para fora em todas as áreas.</p>
-        </div>
-      </div>
-    </section>
+<div class="video">SEU VÍDEO AQUI</div>
 
-    <section id="depoimentos" class="section container">
-      <div class="section-kicker">Resultados reais de alunos reais</div>
-      <h2 class="section-title">O Que Estão Dizendo Sobre o <span class="gold">Mapa da Prosperidade</span></h2>
-      <p class="section-desc">Arraste para o lado e veja alguns relatos de pessoas que aplicaram o conteúdo do Mapa da Prosperidade e começaram a perceber mudanças reais em suas vidas.</p>
+<div style="text-align:center">
+  <a class="btn primary" href="#comprar">QUERO ENTRAR AGORA</a>
+</div>
 
-      <div class="testimonials-wrap">
-        <div class="testimonials-track">
-          <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.50.jpeg" alt="Depoimento 1"></div>
-          <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.51 (1).jpeg" alt="Depoimento 2"></div>
-          <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.51 (2).jpeg" alt="Depoimento 3"></div>
-          <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.51 (3).jpeg" alt="Depoimento 4"></div>
-          <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.51.jpeg" alt="Depoimento 5"></div>
-          <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.52.jpeg" alt="Depoimento 6"></div>
-          <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.52 (1).jpeg" alt="Depoimento 7"></div>
-          <div class="testimonial-card"><img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.52 (2).jpeg" alt="Depoimento 8"></div>
-        </div>
-      </div>
-    </section>
+<h2 style="text-align:center">Depoimentos</h2>
 
-    <section id="faq" class="section section-tight container">
-      <h2 class="section-title">Perguntas frequentes</h2>
-      <p class="section-desc">Tire suas principais dúvidas antes de entrar para o programa.</p>
-      <div class="faq">
-        <details>
-          <summary>Como recebo acesso ao Mapa da Prosperidade?</summary>
-          <p>O acesso é liberado de forma digital logo após a confirmação do pagamento. Assim que sua compra for aprovada, você recebe as orientações para acessar todo o conteúdo.</p>
-        </details>
-        <details>
-          <summary>Preciso ter algum conhecimento prévio para aplicar?</summary>
-          <p>Não. O conteúdo foi pensado para ser simples, direto e aplicável, mesmo para quem está começando agora e quer reorganizar a vida com clareza e propósito.</p>
-        </details>
-        <details>
-          <summary>Possui garantia?</summary>
-          <p>Sim. Você tem 7 dias de garantia para acessar o conteúdo e avaliar com tranquilidade. Se dentro desse prazo sentir que o programa não é para você, poderá solicitar o reembolso.</p>
-        </details>
-      </div>
-    </section>
+<div class="testimonials-wrap">
+  <img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.50.jpeg">
+  <img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.51 (1).jpeg">
+  <img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.51 (2).jpeg">
+  <img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.51 (3).jpeg">
+  <img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.51.jpeg">
+  <img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.52.jpeg">
+</div>
 
-    <section id="comprar" class="section container">
-      <div class="final-cta">
-        <div class="offer-badge">Oferta especial de hoje</div>
-        <h2 class="section-title">Entre hoje no <span class="gold">Mapa da Prosperidade</span> por um valor acessível</h2>
-        <p>Tenha acesso ao conteúdo completo, aulas, materiais e direcionamento prático para começar sua transformação com mais clareza, disciplina, organização e propósito.</p>
+<div class="faq">
+  <details>
+    <summary>Como funciona?</summary>
+    <p>Acesso imediato após pagamento.</p>
+  </details>
+  <details>
+    <summary>Preciso saber algo antes?</summary>
+    <p>Não, é simples e direto.</p>
+  </details>
+  <details>
+    <summary>Tem garantia?</summary>
+    <p>Sim, 7 dias.</p>
+  </details>
+</div>
 
-        <div class="offer-price">
-          <div class="offer-main-price">R$ 29,90</div>
-          <div class="offer-installments">ou 6x de R$ 5,44</div>
-        </div>
+<div id="comprar" class="offer">
+  <h2>Garanta seu acesso</h2>
+  <div class="price">R$ 29,90</div>
+  <p>ou 6x de R$ 5,44</p>
+  <a class="btn primary" href="https://pay.kiwify.com.br/3q1qqMj?afid=UNFwMQW5">COMPRAR AGORA</a>
+</div>
 
-        <div class="offer-note">Acesso imediato após a confirmação do pagamento</div>
-        <div class="offer-guarantee">Garantia incondicional de 7 dias</div>
+</div>
 
-        <div class="cta-row">
-          <a class="btn btn-primary" href="https://pay.kiwify.com.br/3q1qqMj?afid=UNFwMQW5" target="_blank" rel="noopener noreferrer">Garantir minha vaga agora</a>
-        </div>
-        <div class="microcopy">Pagamento 100% seguro • Compra protegida • Acesso digital imediato</div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    © 2026 - Mapa da Prosperidade. Todos os direitos reservados.
-  </footer>
 </body>
 </html>
