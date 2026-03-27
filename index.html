@@ -4,32 +4,190 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mapa da Prosperidade</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
   <style>
-    body{margin:0;font-family:Inter,sans-serif;background:#050505;color:#fff}
-    .topbar{background:#d6a318;color:#111;text-align:center;padding:12px;font-weight:800}
-    .container{max-width:1100px;margin:auto;padding:20px}
-    .hero{text-align:center;padding:60px 0}
-    h1{font-size:clamp(2rem,5vw,3.5rem)}
-    .gold{color:#d6a318}
-    .sub{color:#c9c9c9;margin-top:10px}
-    .video{height:300px;border:1px solid #333;border-radius:20px;display:flex;align-items:center;justify-content:center;margin:30px auto}
-    .btn{padding:16px 24px;border-radius:12px;font-weight:800;text-decoration:none;display:inline-block;margin-top:20px}
-    .primary{background:#d6a318;color:#111}
+    :root {
+      --bg: #050505;
+      --text: #ffffff;
+      --muted: #c9c9c9;
+      --gold: #d6a318;
+      --border: rgba(214, 163, 24, 0.22);
+    }
 
-    .section{padding:60px 0;text-align:center}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px}
-    .card{padding:20px;border:1px solid #222;border-radius:20px;background:#0b0b0b}
-    .card p{color:#c9c9c9}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
-    .testimonials{display:flex;overflow-x:auto;gap:16px;margin-top:20px}
-    .testimonials img{width:260px;border-radius:16px}
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background:
+        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px),
+        radial-gradient(circle at center, rgba(214,163,24,0.12), transparent 40%),
+        var(--bg);
+      background-size: 32px 32px, 32px 32px, auto, auto;
+      overflow-x: hidden;
+    }
 
-    .faq{max-width:700px;margin:30px auto;text-align:left}
-    details{margin-bottom:10px;padding:14px;border:1px solid #222;border-radius:12px}
+    img { max-width: 100%; display: block; }
 
-    .offer{margin-top:40px;padding:40px;border:1px solid #d6a318;border-radius:24px;text-align:center}
-    .price{font-size:48px;font-weight:900}
+    .topbar {
+      background: var(--gold);
+      color: #111;
+      text-align: center;
+      padding: 12px 16px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 14px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 72px 0 36px;
+      text-align: center;
+    }
+
+    .headline {
+      max-width: 980px;
+      margin: 0 auto;
+      font-size: clamp(2.3rem, 6vw, 4.6rem);
+      line-height: 1.02;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+    }
+
+    .gold { color: var(--gold); }
+
+    .subtext {
+      max-width: 760px;
+      margin: 24px auto 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      line-height: 1.7;
+    }
+
+    .video-box {
+      max-width: 720px;
+      height: 405px;
+      margin: 46px auto 0;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: linear-gradient(180deg, #050505, #020202);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.03) inset, 0 20px 60px rgba(0,0,0,0.5);
+      position: relative;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .play-wrap { text-align:center }
+
+    .play-btn {
+      width: 88px;
+      height: 88px;
+      border-radius: 999px;
+      border: 1px solid rgba(214,163,24,0.5);
+      background: rgba(214,163,24,0.14);
+      display: grid;
+      place-items: center;
+      margin: 0 auto 14px;
+    }
+
+    .triangle {
+      width: 0;
+      height: 0;
+      border-left: 18px solid var(--gold);
+      border-top: 11px solid transparent;
+      border-bottom: 11px solid transparent;
+      margin-left: 4px;
+    }
+
+    .cta-row {
+      margin-top: 34px;
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 16px 24px;
+      border-radius: 16px;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #111;
+    }
+
+    .section { padding: 56px 0; }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      text-align: center;
+      font-weight: 900;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top:20px;
+    }
+
+    .card {
+      padding: 24px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .testimonials-wrap {
+      overflow-x: auto;
+      display:flex;
+      gap:18px;
+      margin-top:20px;
+    }
+
+    .testimonials-wrap img {
+      width:260px;
+      border-radius:16px;
+    }
+
+    .faq { max-width:800px;margin:auto }
+
+    details {
+      margin-bottom:10px;
+      padding:14px;
+      border-radius:12px;
+      border:1px solid #222;
+    }
+
+    .offer {
+      margin-top:40px;
+      padding:40px;
+      border-radius:24px;
+      border:1px solid var(--gold);
+      text-align:center;
+    }
+
+    .price {
+      font-size:48px;
+      font-weight:900;
+    }
   </style>
 </head>
 <body>
@@ -39,26 +197,33 @@
 <div class="container">
 
 <section class="hero">
-<h1>Descubra o <span class="gold">Mapa da Prosperidade</span> e transforme sua vida</h1>
-<p class="sub">Um método simples para organizar sua vida e destravar resultados.</p>
+<h1 class="headline">Descubra o <span class="gold">Mapa da Prosperidade</span></h1>
+<p class="subtext">Organize sua vida e destrave resultados.</p>
 
-<div class="video">SEU VÍDEO AQUI</div>
+<div class="video-box">
+  <div class="play-wrap">
+    <div class="play-btn"><div class="triangle"></div></div>
+    <div>Seu vídeo aqui</div>
+  </div>
+</div>
 
-<a class="btn primary" href="#comprar">QUERO ENTRAR AGORA</a>
-</section>
-
-<section class="section">
-<h2>O que você vai encontrar</h2>
-<div class="grid">
-  <div class="card"><h3>Clareza</h3><p>Entenda o que te trava.</p></div>
-  <div class="card"><h3>Direção</h3><p>Saiba o que fazer.</p></div>
-  <div class="card"><h3>Resultado</h3><p>Aplique e evolua.</p></div>
+<div class="cta-row">
+<a class="btn btn-primary" href="#comprar">Quero entrar agora</a>
 </div>
 </section>
 
 <section class="section">
-<h2>Depoimentos</h2>
-<div class="testimonials">
+<h2 class="section-title">O que você vai encontrar</h2>
+<div class="grid">
+  <div class="card"><h3>Clareza</h3><p>Entenda o que te trava.</p></div>
+  <div class="card"><h3>Direção</h3><p>Saiba o que fazer.</p></div>
+  <div class="card"><h3>Transformação</h3><p>Mude sua realidade.</p></div>
+</div>
+</section>
+
+<section class="section">
+<h2 class="section-title">Depoimentos</h2>
+<div class="testimonials-wrap">
   <img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.50.jpeg">
   <img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.51 (1).jpeg">
   <img src="Cópia de WhatsApp Image 2024-05-07 at 17.50.51 (2).jpeg">
@@ -69,7 +234,7 @@
 </section>
 
 <section class="section faq">
-<h2>Perguntas frequentes</h2>
+<h2 class="section-title">Perguntas frequentes</h2>
 <details><summary>Como funciona?</summary><p>Acesso imediato.</p></details>
 <details><summary>Preciso saber algo?</summary><p>Não.</p></details>
 <details><summary>Tem garantia?</summary><p>7 dias.</p></details>
@@ -79,7 +244,7 @@
 <h2>Garanta seu acesso</h2>
 <div class="price">R$ 29,90</div>
 <p>ou 6x de R$ 5,44</p>
-<a class="btn primary" href="https://pay.kiwify.com.br/3q1qqMj?afid=UNFwMQW5">COMPRAR AGORA</a>
+<a class="btn btn-primary" href="https://pay.kiwify.com.br/3q1qqMj?afid=UNFwMQW5">Comprar agora</a>
 </section>
 
 </div>
